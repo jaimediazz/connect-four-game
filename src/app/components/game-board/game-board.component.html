@@ -1,1 +1,15 @@
-<p>game-board works!</p>
+<div class="container">
+    <div class="player-score">
+        <p>PLAYER 1</p>
+        <p>10</p>
+    </div>
+    <div id="board">
+        <div *ngFor="let pos of [].constructor(42); index as i"
+            (click)="positionSelected(i)" 
+            class="board-position"></div>   <!-- 42 positions using *ngFor -->
+    </div>
+    <div class="player-score">
+        <p>PLAYER 2</p>
+        <p>23</p>
+    </div>
+</div>
