@@ -2,6 +2,11 @@
     <div *ngFor="let pos of [].constructor(7)"
         class="disc-position"></div>
 </div> -->
+<div class="header">
+    <button>RULES</button>
+    <p id="player-turn">PLAYER {{ currentPlayer }}'s TURN</p>
+    <button (click)="restartGame()">RESTART</button>
+</div>
 <div class="container">
     <div class="player-score">
         <p>PLAYER 1</p>
@@ -20,5 +25,5 @@
         <p>PLAYER 2</p>
         <p>23</p>
     </div>
-    <p>{{ winner }}</p>
 </div>
+<p>{{ winner }}</p>

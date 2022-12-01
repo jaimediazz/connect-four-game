@@ -119,6 +119,11 @@ export class GameBoardComponent {
     this.currentPlayer === 1 ? this.currentPlayer = 2 : this.currentPlayer = 1;
   }
 
+  restartGame() {
+    this.positionState.fill(0);
+    this.gameOver = false;
+  }
+
   checkBoard() {
     for (let y = 0; y < this.winningArrays.length; y++) {
       const square1 = this.positionState[this.winningArrays[y][0]]
