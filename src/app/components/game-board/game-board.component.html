@@ -1,13 +1,21 @@
+<!-- <div class="container">
+    <div *ngFor="let pos of [].constructor(7)"
+        class="disc-position"></div>
+</div> -->
 <div class="container">
     <div class="player-score">
         <p>PLAYER 1</p>
         <p>10</p>
     </div>
-    <div id="board">
-        <div *ngFor="let pos of [].constructor(42); index as i"
+    <article id="board">
+        <!-- 42 positions using *ngFor -->
+        <div *ngFor="let pos of [].constructor(42); index as i"     
             (click)="positionSelected(i)" 
-            class="board-position"></div>   <!-- 42 positions using *ngFor -->
-    </div>
+            (mouseover)="mouseOverPosition(i)"
+            (mouseout)="mouseOutPosition(i)" 
+            class="board-position"
+            [ngClass]="positionState[i] === 1 ? 'taken-1' : positionState[i] === 2 ? 'taken-2' : ''"></div>
+    </article>
     <div class="player-score">
         <p>PLAYER 2</p>
         <p>23</p>
