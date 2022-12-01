@@ -9,7 +9,7 @@
     </div>
     <article id="board">
         <!-- 42 positions using *ngFor -->
-        <div *ngFor="let pos of [].constructor(42); index as i"     
+        <div *ngFor="let pos of positionState; index as i"     
             (click)="positionSelected(i)" 
             (mouseover)="mouseOverPosition(i)"
             (mouseout)="mouseOutPosition(i)" 
@@ -20,4 +20,5 @@
         <p>PLAYER 2</p>
         <p>23</p>
     </div>
+    <p>{{ winner }}</p>
 </div>
