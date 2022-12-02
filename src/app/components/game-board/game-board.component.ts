@@ -7,9 +7,12 @@ import { Component } from '@angular/core';
 })
 export class GameBoardComponent {
   showDisc: boolean = false;
-  currentPlayer: number = 1;
-  winner: string = 'fsdfs';
+  showRules: boolean = false;
   gameOver: boolean = false;
+  currentPlayer: number = 1;
+  playerOneFirst: boolean = true;
+  winner: string = 'fsdfs';
+  columnHovered: number = 100;
   positionState: number[] = 
     [0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,
@@ -108,11 +111,11 @@ export class GameBoardComponent {
   }
   
   mouseOverPosition(pos: number) {
-    console.log("Position selected (over): " + pos);
+    this.columnHovered = pos % 7;
   }
   
   mouseOutPosition(pos: number) {
-    console.log("Position selected (out): " + pos);
+    this.columnHovered = 100;
   }
 
   changePlayerTurn() {
@@ -122,22 +125,22 @@ export class GameBoardComponent {
   restartGame() {
     this.positionState.fill(0);
     this.gameOver = false;
+    this.playerOneFirst ? this.currentPlayer = 2 : this.currentPlayer = 1;  // CHANGE STARTER PLAYER  
+    this.playerOneFirst = !this.playerOneFirst; // INDICATE WHETHER PLAYER 1 IS THE STARTER OR NOT
   }
 
   checkBoard() {
     for (let y = 0; y < this.winningArrays.length; y++) {
-      const square1 = this.positionState[this.winningArrays[y][0]]
-      const square2 = this.positionState[this.winningArrays[y][1]]
-      const square3 = this.positionState[this.winningArrays[y][2]]
-      const square4 = this.positionState[this.winningArrays[y][3]]
+      const pos1 = this.positionState[this.winningArrays[y][0]]
+      const pos2 = this.positionState[this.winningArrays[y][1]]
+      const pos3 = this.positionState[this.winningArrays[y][2]]
+      const pos4 = this.positionState[this.winningArrays[y][3]]
 
-      //check those squares to see if they all have the class of player-one
-      if (square1 === 1 && square2 === 1 && square3 === 1 && square4 === 1) {
+      if (pos1 === 1 && pos2 === 1 && pos3 === 1 && pos4 === 1) {
         this.winner = 'Winner is player 1'; 
         this.gameOver = true;       
       }
-      //check those squares to see if they all have the class of player-two
-      if (square1 === 2 && square2 === 2 && square3 === 2 && square4 === 2) {
+      if (pos1 === 2 && pos2 === 2 && pos3 === 2 && pos4 === 2) {
         this.winner = 'Winner is player 2';        
         this.gameOver = true;       
       }

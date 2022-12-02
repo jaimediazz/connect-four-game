@@ -1,16 +1,13 @@
-<!-- <div class="container">
-    <div *ngFor="let pos of [].constructor(7)"
-        class="disc-position"></div>
-</div> -->
-<div class="header">
-    <button>RULES</button>
-    <p id="player-turn">PLAYER {{ currentPlayer }}'s TURN</p>
-    <button (click)="restartGame()">RESTART</button>
+<div class="header" [ngStyle]="{display: !showRules ? 'flex' : 'none'}">
+    <button class="header-button space-mono-text" (click)="showRules = true">RULES</button>
+    <p id="player-turn" class="space-mono-text">PLAYER {{ currentPlayer }}'S TURN</p>
+    <button (click)="restartGame()" class="header-button space-mono-text">RESTART</button>
 </div>
-<div class="container">
+<div class="container" [ngStyle]="{display: !showRules ? 'flex' : 'none'}">
     <div class="player-score">
-        <p>PLAYER 1</p>
-        <p>10</p>
+        <p class="space-mono-text">PLAYER 1</p>
+        <p class="space-mono-text big-text">10</p>
+        <div class="turn" [ngStyle]="{display: currentPlayer === 1 ? 'block' : 'none'}"></div>
     </div>
     <article id="board">
         <!-- 42 positions using *ngFor -->
@@ -22,8 +19,24 @@
             [ngClass]="positionState[i] === 1 ? 'taken-1' : positionState[i] === 2 ? 'taken-2' : ''"></div>
     </article>
     <div class="player-score">
-        <p>PLAYER 2</p>
-        <p>23</p>
+        <p class="space-mono-text">PLAYER 2</p>
+        <p class="space-mono-text big-text">23</p>
+        <div class="turn" [ngStyle]="{display: currentPlayer === 2 ? 'flex' : 'none'}"></div>
     </div>
 </div>
-<p>{{ winner }}</p>
+<article id="rules" [ngStyle]="{display: showRules ? 'block' : 'none'}">
+    <h1 class="space-mono-text blue-text">RULES</h1>
+    <h3 class="space-mono-text blue-text">OJECTIVE</h3>
+    <p class="space-mono-text">Be the first player to connect 4 of the same coloured discs in a row (other vertically, horizontally or diagonally).</p>
+    <h3 class="space-mono-text blue-text">HOW TO PLAY</h3>
+    <ol>
+        <li class="space-mono-text">Red goes first in the first game.</li>
+        <li class="space-mono-text">Players must alternate turns and only one disc can be dropped each turn.</li>
+        <li class="space-mono-text">The game ends when there is a 4-in-a-row or a stalemate.</li>
+        <li class="space-mono-text">The starter of the previous game goes second on the next game.</li>
+    </ol>
+    <button class="rules-button" (click)="showRules = false">
+        <div id="check"></div>
+    </button>
+</article>
+<!-- <p class="space-mono-text">{{ winner }}</p> -->
