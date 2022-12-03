@@ -13,8 +13,6 @@
         <!-- 42 positions using *ngFor -->
         <div *ngFor="let pos of positionState; index as i"     
             (click)="positionSelected(i)" 
-            (mouseover)="mouseOverPosition(i)"
-            (mouseout)="mouseOutPosition(i)" 
             class="board-position"
             [ngClass]="{ 'taken-1': positionState[i] === 1, 'taken-2': positionState[i] === 2 }"></div>
     </article>
