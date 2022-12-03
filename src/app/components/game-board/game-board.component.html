@@ -6,7 +6,7 @@
 <div class="container" [ngStyle]="{display: !showRules ? 'flex' : 'none'}">
     <div class="player-score">
         <p class="space-mono-text">PLAYER 1</p>
-        <p class="space-mono-text big-text">10</p>
+        <p class="space-mono-text big-text">{{ playerOnePoints }}</p>
         <div class="turn" [ngStyle]="{display: currentPlayer === 1 ? 'block' : 'none'}"></div>
     </div>
     <article id="board">
@@ -16,11 +16,11 @@
             (mouseover)="mouseOverPosition(i)"
             (mouseout)="mouseOutPosition(i)" 
             class="board-position"
-            [ngClass]="positionState[i] === 1 ? 'taken-1' : positionState[i] === 2 ? 'taken-2' : ''"></div>
+            [ngClass]="{ 'taken-1': positionState[i] === 1, 'taken-2': positionState[i] === 2 }"></div>
     </article>
     <div class="player-score">
         <p class="space-mono-text">PLAYER 2</p>
-        <p class="space-mono-text big-text">23</p>
+        <p class="space-mono-text big-text">{{ playerTwoPoints }}</p>
         <div class="turn" [ngStyle]="{display: currentPlayer === 2 ? 'flex' : 'none'}"></div>
     </div>
 </div>

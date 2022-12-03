@@ -13,6 +13,9 @@ export class GameBoardComponent {
   playerOneFirst: boolean = true;
   winner: string = 'fsdfs';
   columnHovered: number = 100;
+  playerOnePoints: number = 0;
+  playerTwoPoints: number = 0;
+
   positionState: number[] = 
     [0,0,0,0,0,0,0,
       0,0,0,0,0,0,0,
@@ -91,7 +94,7 @@ export class GameBoardComponent {
     [12, 19, 26, 33],
     [13, 20, 27, 34],
     [41, 34, 27, 20]
-  ]
+  ];
 
   positionSelected(pos: number) {
     let columnSelected: number = pos % 7;       // CALCULATE COLUMN SELECTED
@@ -138,11 +141,13 @@ export class GameBoardComponent {
 
       if (pos1 === 1 && pos2 === 1 && pos3 === 1 && pos4 === 1) {
         this.winner = 'Winner is player 1'; 
-        this.gameOver = true;       
+        this.gameOver = true;
+        this.playerOnePoints++;       
       }
       if (pos1 === 2 && pos2 === 2 && pos3 === 2 && pos4 === 2) {
         this.winner = 'Winner is player 2';        
-        this.gameOver = true;       
+        this.gameOver = true;  
+        this.playerTwoPoints++;     
       }
     }
   }  

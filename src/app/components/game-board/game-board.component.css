@@ -181,6 +181,10 @@ li::marker {
 }
 
 @media screen and (max-width: 630px) {
+    .big-text {
+        font-size: 20px;
+    }
+
     .header {
         width: 95%;
     }
